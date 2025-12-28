@@ -6,18 +6,39 @@
     <style>
         body { font-family: Arial, Helvetica, sans-serif; background: #f5f6fa; margin: 0; padding: 0; }
         header { background: #2f3640; color: #fff; padding: 20px; text-align: center; }
-        main { padding: 20px; max-width: 600px; margin: auto; }
+        main { padding: 20px; max-width: 800px; margin: auto; }
         input, button { padding: 10px; margin: 5px 0; width: 100%; box-sizing: border-box; }
         button { background-color: #00a8ff; color: white; border: none; cursor: pointer; }
         button:hover { background-color: #0097e6; }
-        h1 { text-align: center; }
+
+        .trip-card {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .trip-card a {
+            text-decoration: none;
+            color: #2f3640;
+            font-weight: bold;
+            display: block;
+        }
+        .trip-card span {
+            display: block;
+            margin-top: 5px;
+            color: #555;
+        }
     </style>
 </head>
 <body>
+
 <header>
     <h1>Поиск рейсов</h1>
 </header>
+
 <main>
+
     <form th:action="@{/trips}" method="get">
         <label>Откуда:</label>
         <input type="text" name="from" value="Пермь" required/>
@@ -25,6 +46,25 @@
         <input type="text" name="to" value="Казань" required/>
         <button type="submit">Найти рейсы</button>
     </form>
+
+    <hr>
+
+    <div th:if="${#lists.isEmpty(trips)}">
+        Нет доступных рейсов
+    </div>
+
+    <div th:each="t : ${trips}" class="trip-card">
+        <a th:href="@{/trip/{id}(id=${t.id})}"
+           th:text="${t.route.fromCity + ' → ' + t.route.toCity}"></a>
+
+        <span th:text="'Отправление: ' + ${#temporals.format(t.departureTime, 'dd-MM-yyyy HH:mm')}"></span>
+        <span th:text="'Цена: ' + ${#numbers.formatCurrency(t.priceRub)}"></span>
+
+        <a th:href="@{/trip/{id}(id=${t.id})}">
+            <button type="button" style="margin-top:10px;">Выбрать</button>
+        </a>
+    </div>
+
 </main>
 </body>
 </html>

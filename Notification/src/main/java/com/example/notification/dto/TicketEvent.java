@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @JsonTypeInfo(
@@ -21,6 +23,6 @@ public class TicketEvent {
     private String fromCity;
     private String toCity;
     private String email;
-    private String departureTime;
+    private LocalDateTime departureTime;
     private Integer seatNumber;
 }

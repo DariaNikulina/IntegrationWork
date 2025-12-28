@@ -15,6 +15,10 @@ import java.util.List;
 public class TripService {
     private final TripRepository tripRepository;
 
+    public List<Trip> findAll() {
+        return tripRepository.findAll();
+    }
+
     public List<Trip> search(String from, String to) {
         return tripRepository.findByRouteFromCityIgnoreCaseAndRouteToCityIgnoreCaseAndDepartureTimeAfter(from, to, LocalDateTime.now());
     }

@@ -31,7 +31,7 @@
 </header>
 <main>
   <div class="trip-info">
-    <p>Отправление: <span th:text="${trip.departureTime}"></span></p>
+    <p>Отправление: <span th:text="${#temporals.format(trip.departureTime, 'dd-MM-yyyy  HH:mm')}"></span></p>
     <p>Цена: <span th:text="${#numbers.formatCurrency(trip.priceRub)}"></span> ₽</p>
   </div>
 
@@ -52,7 +52,7 @@
     <input name="passengerName" required/>
     <label>Email</label>
     <input name="email" type="email" required/>
-    <button type="submit" id="submitBtn" disabled>Заказать</button>
+    <button type="submit" id="submitBtn">Заказать</button>
   </form>
 
   <a th:href="@{/trips(from=${trip.route.fromCity},to=${trip.route.toCity})}" class="back-link">Назад</a>

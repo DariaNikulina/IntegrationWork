@@ -20,7 +20,7 @@
     <div class="field"><label>Маршрут:</label> <span th:text="${fromCity} + ' → ' + ${toCity}">Москва → Казань</span></div>
     <div class="field">
         <label>Отправление:</label>
-        <span th:text="${departureTime}"></span>
+        <span th:text="${#temporals.format(departureTime, 'dd-MM-yyyy  HH:mm')}"></span>
     </div>
     <div class="field"><label>Место:</label> <span th:text="${seatNumber}">12</span></div>
     <p>

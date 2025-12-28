@@ -37,7 +37,7 @@
         <div class="ticket-info">
             <p><b th:text="${t.trip.route.fromCity}"></b> →
                 <b th:text="${t.trip.route.toCity}"></b></p>
-            <p>Дата: <span th:text="${t.trip.departureTime}"></span></p>
+            <p>Дата: <span th:text="${#temporals.format(t.trip.departureTime, 'dd-MM-yyyy  HH:mm')}"></span></p>
             <p>Место: <span th:text="${t.seat.seatNumber}"></span></p>
             <span th:class="'status ' + ${t.status.name()}"
                   th:text="${t.status}"></span>

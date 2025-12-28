@@ -19,12 +19,12 @@
         <span th:text="${fromCity} + ' → ' + ${toCity}"/>
     </div>
     <div class="field"><label>Отправление:</label>
-        <span th:text="${departureTime}"/>
+        <span th:text="${#temporals.format(departureTime, 'dd-MM-yyyy  HH:mm')}"/>
     </div>
     <div class="field"><label>Место:</label>
         <span th:text="${seatNumber}"/>
     </div>
-    <div class="field"><label>Время отмены билета:</label> <span th:text="${cancelledAt}"/></div>
+    <div class="field"><label>Время отмены билета:</label> <span th:text="${#temporals.format(cancelledAt, 'dd-MM-yyyy HH:mm:ss')}"/></div>
 
     <p>Спасибо, что воспользовались нашим сервисом.</p>
 </div>

@@ -14,7 +14,12 @@ public class TripsController {
     private final TripService tripService;
 
     @GetMapping("/")
-    public String index() { return "index"; }
+    public String index(Model model) {
+        model.addAttribute("trips", tripService.findAll());
+        model.addAttribute("from", "Все");
+        model.addAttribute("to", "Все");
+        return "index";
+    }
 
     @GetMapping("/trips")
     public String listTrips(@RequestParam String from, @RequestParam String to, Model model) {
@@ -22,7 +27,7 @@ public class TripsController {
         model.addAttribute("trips", trips);
         model.addAttribute("from", from);
         model.addAttribute("to", to);
-        return "trips";
+        return "index";
     }
 
     @GetMapping("/trip/{id}")

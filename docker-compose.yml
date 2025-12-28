@@ -44,29 +44,29 @@ services:
       - "8025:8025"
       - "1025:1025"
 
-#  booking-app:
-#    image: booking-app:latest
-#    depends_on:
-#      - postgres
-#      - kafka
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/booking
-#      SPRING_DATASOURCE_USERNAME: postgres
-#      SPRING_DATASOURCE_PASSWORD: postgres
-#      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-#      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-#    ports:
-#      - "8080:8080"
+  booking-app:
+    image: booking-app:latest
+    depends_on:
+      - postgres
+      - kafka
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/booking
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    ports:
+      - "8080:8080"
 
-#  notification-app:
-#    image: notification-app:latest
-#    depends_on:
-#      - kafka
-#      - mailhog
-#    environment:
-#      BOOKING_SERVICE_URL: localhost:8080
-#      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-#      SPRING_MAIL_HOST: mailhog
-#      SPRING_MAIL_PORT: 1025
-#    ports:
-#      - "8081:8081"
+  notification-app:
+    image: notification-app:latest
+    depends_on:
+      - kafka
+      - mailhog
+    environment:
+      BOOKING_SERVICE_URL: localhost:8080
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_MAIL_HOST: mailhog
+      SPRING_MAIL_PORT: 1025
+    ports:
+      - "8081:8081"
