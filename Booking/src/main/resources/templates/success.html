@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Билет куплен</title>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; background: #f5f6fa; margin:0; padding:0; }
+        header { background: #2f3640; color:#fff; padding:20px; text-align:center; }
+        main { padding: 20px; max-width: 600px; margin:auto; background: #fff; border-radius: 8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+        h2 { color: #4cd137; }
+        p { margin: 10px 0; }
+        .back-link { display: inline-block; margin-top: 15px; text-decoration: none; color: #00a8ff; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Билет успешно зарезервирован</h1>
+</header>
+<main>
+    <h2>Поздравляем!</h2>
+    <p>Номер билета: <span th:text="${ticket.id}"></span></p>
+    <p>Маршрут: <span th:text="${ticket.trip.route.fromCity + ' → ' + ticket.trip.route.toCity}"></span></p>
+    <p>Место: <span th:text="${ticket.seat.seatNumber}"></span></p>
+    <p>На почту <span th:text="${ticket.email}"></span> отправлено уведомление.</p>
+    <a th:href="@{/tickets(email=${email})}">
+        Перейти к моим билетам
+    </a>
+    <a href="/" class="back-link">На главную</a>
+</main>
+</body>
+</html>

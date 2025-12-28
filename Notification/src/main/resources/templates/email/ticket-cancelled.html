@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; line-height: 1.4; color: #222; }
+        .card { border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; max-width:600px; }
+        .header { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .field { margin-bottom: 6px; }
+        .field label { font-weight: 600; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="header">Билет отменён</div>
+    <p>Ваш билет был успешно отменён.</p>
+    <div class="field"><label>Номер билета:</label> <span th:text="${ticketId}"/></div>
+    <div class="field"><label>Маршрут:</label>
+        <span th:text="${fromCity} + ' → ' + ${toCity}"/>
+    </div>
+    <div class="field"><label>Отправление:</label>
+        <span th:text="${departureTime}"/>
+    </div>
+    <div class="field"><label>Место:</label>
+        <span th:text="${seatNumber}"/>
+    </div>
+    <div class="field"><label>Время отмены билета:</label> <span th:text="${cancelledAt}"/></div>
+
+    <p>Спасибо, что воспользовались нашим сервисом.</p>
+</div>
+</body>
+</html>

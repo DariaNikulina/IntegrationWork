@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; line-height: 1.4; color: #222; }
+        .card { border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; max-width:600px; }
+        .header { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .field { margin-bottom: 6px; }
+        .field label { font-weight: 600; }
+        .danger { color:#e84118; text-decoration:none; font-weight:600; }
+        .btn { display:inline-block; padding:10px 16px; background:#00a8ff; color:white; text-decoration:none; border-radius:6px; font-weight:600; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="header">Благодарим за заказ!</div>
+    <p>Ваш билет успешно оформлен.</p>
+    <div class="field"><label>Номер билета:</label> <span th:text="${ticketId}">123</span></div>
+    <div class="field"><label>Маршрут:</label> <span th:text="${fromCity} + ' → ' + ${toCity}">Москва → Казань</span></div>
+    <div class="field">
+        <label>Отправление:</label>
+        <span th:text="${departureTime}"></span>
+    </div>
+    <div class="field"><label>Место:</label> <span th:text="${seatNumber}">12</span></div>
+    <p>
+        <a th:href="${viewLink}" class="btn">Посмотреть билет</a>
+    </p>
+    <p>Пожалуйста, сохраните это письмо.</p>
+</div>
+</body>
+</html>

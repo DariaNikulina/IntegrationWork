@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск рейсов</title>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; background: #f5f6fa; margin: 0; padding: 0; }
+        header { background: #2f3640; color: #fff; padding: 20px; text-align: center; }
+        main { padding: 20px; max-width: 600px; margin: auto; }
+        input, button { padding: 10px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+        button { background-color: #00a8ff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0097e6; }
+        h1 { text-align: center; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Поиск рейсов</h1>
+</header>
+<main>
+    <form th:action="@{/trips}" method="get">
+        <label>Откуда:</label>
+        <input type="text" name="from" value="Пермь" required/>
+        <label>Куда:</label>
+        <input type="text" name="to" value="Казань" required/>
+        <button type="submit">Найти рейсы</button>
+    </form>
+</main>
+</body>
+</html>
